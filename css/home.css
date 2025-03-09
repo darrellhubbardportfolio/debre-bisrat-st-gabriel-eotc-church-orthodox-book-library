@@ -4,13 +4,12 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: auto;
 }
 .books {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(425px, 425px);
-    /* border: 1px solid lightgray; */
-    padding: 0;
     width: 100%;
 }
 

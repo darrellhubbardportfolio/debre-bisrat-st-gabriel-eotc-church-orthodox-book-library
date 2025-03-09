@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF database</title>
+    <!-- google fonts poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- icons from bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/pdf-view.css">
+</head>
+<body>
+    <main>
+        <p class="text-center col-8">
+            all pdf files are read from the file directory and posted here. if a pdf file has been used to create a book it will have a checkmark next to it, to represent that it has been already made into a book. if you want to modify it, just delete the book or modify the file attached with it.
+        </p>
+        <!-- view all pdf files and create a book from one -->
+        <section class="container-fluid col-12 d-flex align-items-center justify-content-center p-5">
+
+            <ul class="p-0 pdf-list"></ul>
+        </section>
+    </main>
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- popper js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <!-- javascript -->
+    <script src="js/pdf-file-reader.js"></script>
+</body>
+</html>

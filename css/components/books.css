@@ -1,15 +1,12 @@
-
-
 .book-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border: 1px solid lightgray; */
 }
 .book {
     display: flex;
     align-items: center;
-    justify-content: center;;
+    justify-content: center;
 }
 .book-link {
     display: flex;

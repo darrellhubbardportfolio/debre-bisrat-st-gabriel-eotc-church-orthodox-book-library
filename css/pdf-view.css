@@ -1,0 +1,41 @@
+main {
+    flex-direction: column;;
+}
+.pdf-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(60px, 60px);
+}
+.pdf-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.pdf-list-item> :nth-child(2) {
+    font-weight: bold;
+}
+
+@media (max-width: 576px) {
+
+    .pdf-list {
+        grid-auto-rows: minmax(300px, 300px) !important;
+    }
+    .pdf-list-item {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: 125px repeat(4, 1fr) !important;
+    }
+    .pdf-list-item> :nth-child(1) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100% !important;
+        font-size: 100px !important;
+    }
+    .pdf-list-item> :nth-child(2),
+    .pdf-list-item> :nth-child(3),
+    .pdf-list-item> :nth-child(4),
+    .pdf-list-item> :nth-child(5) {
+        font-size: 14px !important;
+    }
+}

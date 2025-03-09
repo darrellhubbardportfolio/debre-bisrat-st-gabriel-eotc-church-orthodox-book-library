@@ -1,0 +1,22 @@
+main {
+    flex-direction: column;
+}
+.pdf-list-item {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid crimson;
+    border-radius: 8px;
+    padding: 8px 0;
+}
+.pdf-file-icon {
+
+}
+.pdf-filename {
+
+}
+.pdf-file-size {
+    font-size: 12px;
+}

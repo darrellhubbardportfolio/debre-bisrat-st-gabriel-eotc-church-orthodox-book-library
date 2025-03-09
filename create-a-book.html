@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create and Publish A Book</title>
+    <!-- google fonts poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- icons from bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <main>
+        <!-- this form is to allow the administrator(s) to upload files off of their own computer. -->
+        <section>
+            <form name="create_a_book" enctype="multipart/form-data">
+                <!-- image preview -->
+                <div class="">
+                    <img id="book_cover_preview" src="images/placeholder.png" alt="Book Cover Preview" class="img-fluid">
+                </div>
+                <!-- add jpg, jpeg, png, JPG, JPEG, PNG file for a book cover -->
+                <div class="form-group">
+                    <label for="book_cover">Book Cover</label>
+                    <input type="file" id="book_cover" name="book_cover" accept=".jpg, .jpeg, .png, .JPG, .JPEG, .PNG" required>
+                </div>
+                <!-- pdf file preview -->
+                <div class="container-fluid d-flex align-items-center justify-content-center border rounded-2">
+                    <i class="bi bi-file-earmark-pdf fs-3"></i>
+                    <div class="container-fluid col d-flex flex-column align-items-center justify-center text-start">
+                        <label class="fw-bold col-12">to-kill-a-mockingbird.pdf</label>
+                        <span class="col-12">size 40kb</span>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm rounded-2">Remove</button>
+                </div>
+                <!-- add a pdf file here -->
+                <div class="form-group">
+                    <label for="book_pdf">Book PDF</label>
+                    <input type="file" id="book_pdf" name="book_pdf" accept=".pdf" required>
+                </div>
+                <div class="form-group">
+                    <label for="book_title">Book Title</label>
+                    <input type="text" id="book_title" name="book_title" placeholder="Book Title" required>
+                </div>
+                <div class="form-group">
+                    <label for="book_author">Book Author</label>
+                    <input type="text" id="book_author" name="book_author" placeholder="Book Author" required>
+                </div>
+                <div class="form-group">
+                    <label for="book_description">Book Description</label>
+                    <textarea id="book_description" name="book_description" placeholder="Book Description" required></textarea>
+                </div>
+            </form>
+        </section>
+    </main>
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- popper js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <!-- javascript -->
+    <script src="js/create-book.js"></script>
+</body>
+</html>
