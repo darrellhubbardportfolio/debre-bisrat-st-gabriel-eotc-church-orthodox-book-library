@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <!-- google fonts poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- icons from bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!-- bootstrap css -->
@@ -17,20 +21,29 @@
     <main>
         <!-- library catalog -->
         <section id="library-catalog">
-            <h2>Library Catalog</h2>
-            <p>Welcome to the library catalog. Here you can find a wide range of books and resources.</p>
+
+            <h2 class="text-center col-12 m-0 p-0">Library Catalog</h2>
+
+            <p class="text-center lh-lg col-12 m-0 p-0">Welcome to the library catalog. Here you can find a wide range of books and resources.</p>
+
             <div class="books">
+
                 <div class="book-container">
+
                     <article class="book">
-                        <a href="" class="book-link">
+
+                        <a class="book-link">
+
                             <div class="book-cover-container">
-                                <img src="https://books.google.com/books/content?id=BOOK_ID&printsec=frontcover&img=1&zoom=1&source=gbs_api" alt="Book Cover" width="125" height="125" class="book-cover" />
+                                <img src="assets/the-sun-also-rises.jpg" alt="Book Cover" width="200" height="200" class="book-cover" />
                             </div>
                             <div class="book-info">
-                                <h3 class="book-title">Book Title: </h3>
-                                <p class="book-author">Author: </p>
-                                <p class="book-description">Description: </p>
+
+                                <h3 class="book-title">The Sun Also Rises</h3>
+                                <p class="book-author">Earnest Hemingway</p>
+                                <p class="book-description">a story of love and loss in post-war europe</p>
                                 <div class="book-button-container">
+
                                     <button type="button" class="book-button">
                                         <span class="book-button-text">Start Reading</span>
                                         <i class="bi bi-arrow-up-right book-button-icon"></i>
