@@ -1,0 +1,21 @@
+#library-catalog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.books {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(600px, 600px);
+    /* border: 1px solid lightgray; */
+    padding: 0;
+    width: 100%;
+}
+.book-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgray;
+}
