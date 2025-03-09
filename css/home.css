@@ -8,14 +8,14 @@
 .books {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(600px, 600px);
+    grid-auto-rows: minmax(425px, 425px);
     /* border: 1px solid lightgray; */
     padding: 0;
     width: 100%;
 }
-.book-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid lightgray;
+
+@media (max-width: 576px) {
+    .books {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

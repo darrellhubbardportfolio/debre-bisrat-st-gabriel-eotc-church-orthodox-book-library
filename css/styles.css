@@ -13,3 +13,9 @@ main {
     align-items: center;
     justify-content: center;
 }
+
+.bi {
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+}
