@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- google fonts poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- icons from bootstrap -->
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-grid.min.css" />
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="/public/css/home.css">
+    <link rel="stylesheet" href="/public/css/components/books.css">
+</head>
+<body>
+    <header class="container-fluid col-12">
+
+    </header>
+    <main>
+        <section class="container-fluid col-12 d-flex align-items-center justify-content-center" style="background-color: mintcream; height: 200px;">
+
+            <!-- create a search bar -->
+            <div class="search-bar container-fluid col-12 d-flex align-items-center justify-content-center">
+                <form class="container-fluid col-12 d-flex align-items-center justify-content-center" role="search">
+                    <input class="form-control" type="search" placeholder="Search for books..." aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </section>
+        <!-- library catalog -->
+        <section id="library-catalog">
+
+            <h2 class="text-center col-12 m-0 p-0">Library Catalog</h2>
+
+            <p class="text-center lh-lg col-12 m-0 p-0">Welcome to the library catalog. Here you can find a wide range of books and resources.</p>
+
+            <div class="books"></div>
+        </section>
+    </main>
+    <!-- bootstrap js -->
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- popper js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <!-- javascript -->
+    <script src="/public/js/scripts.js"></script>
+</body>
+</html>

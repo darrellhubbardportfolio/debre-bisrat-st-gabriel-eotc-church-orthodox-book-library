@@ -2,7 +2,7 @@
 const bookCatalog = document.querySelector(".books");
 
 // fetch all books
-fetch("books.json")
+fetch("/api/books")
 .then(request => request.json())
 .then(books => {
     books.forEach( book => {
@@ -45,7 +45,7 @@ function createBook(data) {
     author.textContent = data.author;
 
     const description = document.createElement("p");
-    description.classList.add("book-description", "col-12", "text-truncate");
+    description.classList.add("book-description");
     description.textContent = data.description;
 
     // the button
@@ -74,12 +74,12 @@ function createBook(data) {
     bookInfo.appendChild(title);
     bookInfo.appendChild(author);
     bookInfo.appendChild(description);
-    bookInfo.appendChild(bookButtons);
+    // bookInfo.appendChild(bookButtons);
 
     // add the buttons
-    bookButtons.appendChild(bookButton);
-    bookButton.appendChild(bookButtonText);
-    bookButton.appendChild(bookButtonIcon);
+    // bookButtons.appendChild(bookButton);
+    // bookButton.appendChild(bookButtonText);
+    // bookButton.appendChild(bookButtonIcon);
 
 
     bookContainer.appendChild(book);
@@ -117,3 +117,6 @@ function createBook(data) {
     </div>
     <!-- created first book -->
 */
+
+// count the total number of books in results
+const searchResults = document.querySelector(".search-results-count");

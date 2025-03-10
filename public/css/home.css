@@ -1,3 +1,8 @@
+main {
+    flex-direction: column;
+    padding: 20px;
+}
+
 #library-catalog {
     display: flex;
     flex-direction: column;
@@ -9,7 +14,7 @@
 .books {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: minmax(425px, 425px);
+    grid-auto-rows: minmax(auto, auto);
     width: 100%;
 }
 

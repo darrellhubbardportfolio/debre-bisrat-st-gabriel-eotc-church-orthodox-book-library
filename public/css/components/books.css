@@ -15,6 +15,7 @@
     flex-direction: column;
     text-decoration: none;
     color: black;
+    /* border: 1px solid green; */
 }
 .book-cover-container {
     display: flex;
@@ -22,7 +23,7 @@
     justify-content: center;
     width: 250px;
     height: 250px;
-    padding: 20px;
+    /* padding: 20px; */
 }
 .book-cover {
     /* background-color: royalblue; */
@@ -44,26 +45,35 @@
     justify-content: center;
     flex-direction: column;
     padding: 8px;
+    /* border: 1px solid red; */
 }
 .book-title {
     font-size: 1.25rem;
     font-weight: normal;
     text-align: center;
     text-transform: capitalize;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    max-width: 250px;
     margin: 0;
     padding: 0;
 }
 .book-author {
     font-size: 0.85rem;
-    margin: 0;
+    margin: 4px 0;
     padding: 0;
 }
 .book-description {
     font-size: 0.85rem;
-    font-style: italic;
-    margin: 0;
-    padding: 4px;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
 }
+
 .book-button-container {
     display: flex;
     align-items: center;

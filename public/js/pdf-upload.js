@@ -2,6 +2,13 @@ const pdfList = document.querySelector('.pdf-list');
 
 const pdfFile = document.querySelector('#pdf_file');
 
+const addPDFBtn = document.querySelector(".upload_pdf_button");
+
+addPDFBtn.onclick = (ev) => {
+
+    pdfFile.click();
+}
+
 // upload pdf file
 pdfFile.addEventListener('change', (e) => {
     // get the selected file

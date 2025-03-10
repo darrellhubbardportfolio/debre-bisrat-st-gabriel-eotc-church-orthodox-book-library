@@ -13,8 +13,8 @@
     <!-- bootstrap css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     <!-- stylesheets -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/pdf-upload.css">
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="/public/css/pdf-upload.css">
 </head>
 <body>
     <main>
@@ -47,14 +47,17 @@
                     <input type="email" id="sender_email" name="sender_email" class="form-control" placeholder="Your Email" required>
                 </div>
 
+                <!-- add a pdf file; acts on behalf of the upload input -->
+                <button type="button" name="upload_pdf_button" class="upload_pdf_button btn btn-lg rounded-1" style="background-color: crimson; color: white; font-size: 14px; font-weight: normal;">Add PDF</button>
+
                 <!-- pdf list -->
                 <ul class="col-12 p-0 pdf-list"></ul>
 
                 <!-- add a pdf file or multiple ones -->
-                <input type="file" name="pdf_file" id="pdf_file" class="form-control" accept=".pdf" multiple required />
+                <input type="file" name="pdf_file" id="pdf_file" class="form-control" accept=".pdf" hidden required aria-hidden="true" />
 
                 <div class="container-fluid col-12 d-flex align-items-center justify-content-center">
-                    <button type="submit" class="btn btn-primary btn-sm rounded-2">Add PDF</button>
+                    <button type="submit" class="btn btn-primary btn-sm rounded-2">Upload PDF</button>
                 </div>
             </form>
         </section>
@@ -64,6 +67,6 @@
     <!-- popper js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <!-- javascript -->
-    <script src="js/pdf-upload.js"></script>
+    <script src="/public/js/pdf-upload.js"></script>
 </body>
 </html>
