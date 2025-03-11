@@ -1,0 +1,12 @@
+main {
+    flex-direction: column;
+    height: 100vh;
+}
+.start-reading {
+    text-decoration: none;
+    background-color: black;
+    color: white !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

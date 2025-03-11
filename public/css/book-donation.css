@@ -1,0 +1,106 @@
+main {
+    flex-direction: column !important;
+    min-height: 100vh;
+}
+
+/* section {
+
+} */
+
+form[name="donate_a_book"] {
+    padding: 20px;
+    /* border: 1px solid lightgray;
+    box-shadow: 0 0 8px lightgray; */
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-label {
+    width: 100% !important;
+    text-align: start !important;
+    font-weight: normal;
+}
+
+.form-control {
+    width: 100% !important;
+    text-align: start !important;
+    padding: 8px !important;
+}
+
+.pdf-file-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pdf-file {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: rgb(250, 250, 250);
+    border-radius: 4px;
+    padding: 8px 0;
+}
+
+.pdf-file-icon {
+
+}
+
+.pdf-filename {
+    font-weight: normal !important;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+.pdf-file-size {
+    font-size: 12px;
+}
+
+.upload_pdf_button {
+    background-color: crimson !important; 
+    color: white !important; 
+    font-size: 14px !important; 
+    font-weight: normal !important;
+}
+
+@media (max-width: 576px) {
+
+    main> section {
+        padding: 0 !important;
+    }
+    form[name="donate_a_book"] {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 16px !important;
+        width: 100% !important;
+    }
+    .form-group {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    .form-label, .form-controls {
+        width: 100% !important;
+    }
+    .pdf-file {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: 200px repeat(2, auto) !important;
+        border: 1px solid crimson !important;
+    }
+    .pdf-file-icon {
+        font-size: 125px !important;
+    }
+
+    .pdf-file-size {
+        text-align: center !important;
+        font-size: 14px !important;
+    }
+}

@@ -47,6 +47,81 @@
     <!-- popper js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <!-- javascript -->
-    <script src="/public/js/scripts.js"></script>
+    <script>
+        const bookCatalog = document.querySelector(".books");
+
+        // fetch all books
+        fetch("/api/library")
+        .then(request => request.json())
+        .then(books => {
+            books.forEach( book => {
+                // check results
+                console.log(book);
+                createBook(book);
+            });
+        });
+
+        // create a new book
+        function createBook(data) {
+
+            const bookContainer = document.createElement("div");
+            bookContainer.classList.add("book-container");
+
+            const book = document.createElement("article");
+            book.classList.add("book");
+
+            const bookLink = document.createElement("a");
+            bookLink.classList.add("book-link");
+            bookLink.href = "/book/" + data.title;
+
+            const bookCoverContainer = document.createElement("div");
+            bookCoverContainer.classList.add("book-cover-container");
+
+            const bookCover = document.createElement("img");
+            bookCover.classList.add("book-cover");
+            bookCover.src = data.cover;
+            bookCover.alt = data.title;
+
+            const bookInfo = document.createElement("div");
+            bookInfo.classList.add("book-info");
+
+            const title = document.createElement("h3");
+            title.classList.add("book-title");
+            title.textContent = data.title;
+
+            const author = document.createElement("p");
+            author.classList.add("book-author");
+            author.textContent = data.author;
+
+            const description = document.createElement("p");
+            description.classList.add("book-description");
+            description.textContent = data.description;
+
+            // add the book link 1st
+            book.appendChild(bookLink);
+
+            // add the book cover to the booklink
+            bookLink.appendChild(bookCoverContainer);
+
+            // add teh book info to the link
+            bookLink.appendChild(bookInfo);
+
+            bookCoverContainer.appendChild(bookCover);
+
+            // add the book info
+            bookInfo.appendChild(title);
+            bookInfo.appendChild(author);
+            bookInfo.appendChild(description);
+
+
+            bookContainer.appendChild(book);
+            bookCatalog.appendChild(bookContainer);
+
+            // check results
+            console.log("new book created");
+        }
+        // count the total number of books in results
+        const searchResults = document.querySelector(".search-results-count");
+    </script>
 </body>
 </html>
