@@ -1,0 +1,23 @@
+form, .form-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-label {
+    width: 100%;
+    text-align: start;
+    font-size: 12px;
+}
+.form-control {
+    width: 100%;
+    padding: 4px;
+}
+
+form[name="create_a_book"] {
+    flex-direction: column;
+    gap: 8px;
+}
+
+form[name="create_a_book"]> .form-group {
+    flex-direction: column;
+}
