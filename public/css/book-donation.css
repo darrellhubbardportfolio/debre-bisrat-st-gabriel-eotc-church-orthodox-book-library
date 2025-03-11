@@ -3,10 +3,6 @@ main {
     min-height: 100vh;
 }
 
-/* section {
-
-} */
-
 form[name="donate_a_book"] {
     padding: 20px;
     /* border: 1px solid lightgray;

@@ -27,7 +27,10 @@ app.use(session({
 
 // load models
 const { Books } = require("./models/BookModel");
-const books = new Books(); // create a new instance
+const books = new Books(); // create a book instance
+
+const { PDF } = require("./models/PDFModel");
+const pdf = new PDF(); // create a pdf instance
 
 // home page
 app.get("/", (req, res) => {
@@ -70,6 +73,20 @@ app.post("/donate-a-book/post", (req, res) => {
 // administrator can view all categories here
 
 // administrator can view all pdf files here
+app.get("/pdfs", (req, res) => {
+    res.render("(admin)/pdf-database");
+});
+
+app.get("/api/pdfs", async (req, res) => {
+
+    let items = await pdf.read();
+    res.json(items);
+});
+
+// administrator creates books on this route
+app.get("/create-book", (req, res) => {
+    res.render("(admin)/create-a-book");
+});
 
 // administrator can view all books here
 

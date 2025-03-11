@@ -4,15 +4,32 @@ main {
 .pdf-list {
     display: grid;
     grid-template-columns: 1fr;
-    grid-auto-rows: minmax(60px, 60px);
+    grid-auto-rows: minmax(85px, 85px);
+    border: 1px solid lightgray;
+    border-radius: 4px;
 }
 .pdf-list-item {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
+    width: 100%;
 }
-.pdf-list-item> :nth-child(2) {
-    font-weight: bold;
+
+.pdf-icon {
+    color: crimson;
+}
+
+.filename {
+    /* color: crimson; */
+}
+
+.create-a-book-link {
+    text-decoration: none;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    gap: 4px;
 }
 
 @media (max-width: 576px) {
