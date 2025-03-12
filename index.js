@@ -7,7 +7,7 @@ const cookie = require("cookie-parser");
 
 // read express static files
 app.use("/public", express.static(path.join(__dirname, "public")));
-app.use("/books.json", express.static(path.join(__dirname, "books.json")));
+app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
 
 // read body form data
 app.use(express.urlencoded({extended: true}));
@@ -42,7 +42,17 @@ app.get("/", (req, res) => {
 app.get("/api/library", 
     async (req, res) => {
 
-    let book = await books.read();
+    let book = await books.findBookRange(0, 8);
+    res.json(book);
+});
+
+// use fetch request from client to find new ranges.
+app.post("/api/find-book-range", 
+    async (req, res) => {
+
+    const { start, last } = req.body;
+    
+    let book = await books.findBookRange(start, last);
     res.json(book);
 });
 
@@ -79,7 +89,7 @@ app.get("/pdfs", (req, res) => {
 
 app.get("/api/pdfs", async (req, res) => {
 
-    let items = await pdf.read();
+    let items = await pdf.readPDF();
     res.json(items);
 });
 

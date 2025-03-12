@@ -32,12 +32,23 @@
                 </form>
             </div>
         </section>
+
+        <!-- add a display button that will trigger the range -->
+        <section class="container-fluid col-12 p-3 d-flex align-items-center justify-content-center">
+
+            <select class="form-control" name="displays_per_page">
+                <option value="15" selected>15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+            </select>
+        </section>
+
+        <h2 class="text-center col-12" style="text-align: center;">Orthodox Library Catalog</h2>
+
+        <p class="text-center col-12" style="text-align: center;">Welcome to the library catalog. Here you can find a wide range of books and resources.</p>
+
         <!-- library catalog -->
-        <section id="library-catalog">
-
-            <h2 class="text-center col-12 m-0 p-0">Orthodox Library Catalog</h2>
-
-            <p class="text-center lh-lg col-12 m-0 p-0">Welcome to the library catalog. Here you can find a wide range of books and resources.</p>
+        <section class="container-fluid col-12" id="library-catalog">
 
             <div class="books"></div>
         </section>
@@ -48,18 +59,47 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <!-- javascript -->
     <script>
-        const bookCatalog = document.querySelector(".books");
 
-        // fetch all books
-        fetch("/api/library")
-        .then(request => request.json())
-        .then(books => {
-            books.forEach( book => {
-                // check results
-                console.log(book);
+        const bookCatalog = document.querySelector(".books");
+        let displaysPerPage = document.querySelector("select[name='displays_per_page']");
+        let start = 0;
+        let last = displaysPerPage.value;
+
+        findBookRange(start, last);
+
+        displaysPerPage.onchange = () => {
+            
+            // update the last var
+            last = displaysPerPage.value;
+
+            findBookRange(start, last);
+        }
+ 
+        // update book range
+        async function findBookRange(start, last) {
+
+            // clear the list of books first
+            bookCatalog.innerHTML = null;
+
+            const options = {
+                method: "POST",
+                body: JSON.stringify({start, last}),
+                headers: {
+                    "Content-Type" : "application/json" 
+                }
+            }
+            // now search for a new range
+            const request = await fetch("/api/find-book-range", options);
+
+            const books = await request.json();
+
+            // clear the list of books first
+            bookCatalog.innerHTML = null;
+
+            books.map(book => {
                 createBook(book);
             });
-        });
+        }
 
         // create a new book
         function createBook(data) {
@@ -85,7 +125,7 @@
             const bookInfo = document.createElement("div");
             bookInfo.classList.add("book-info");
 
-            const title = document.createElement("h3");
+            const title = document.createElement("h5");
             title.classList.add("book-title");
             title.textContent = data.title;
 
