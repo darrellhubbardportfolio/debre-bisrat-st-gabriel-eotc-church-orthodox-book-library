@@ -18,6 +18,15 @@
     <link rel="stylesheet" href="/public/css/components/books.css">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a>home</a></li>
+            <li><a>search</a></li>
+            <li><a>catalog</a></li>
+            <li><a>register</a></li>
+            <li><a>login</a></li>
+        </ul>
+    </nav>
     <header class="container-fluid col-12">
 
     </header>
@@ -35,29 +44,45 @@
             </div>
         </section>
 
-        <!-- sort and filters -->
-        <section class="container-fluid col-12 d-flex align-items-center justify-content-center p-5" id="sort-container">
+        <section class="row col-12 g-3 p-5">
 
-            <select class="form-control" name="sort" id="sort">
+            <!-- filter books -->
+            <div class="container-fluid col d-flex align-items-center justify-content-center" id="filter-container">
 
-                <option value="title" data-sort-order="ASC">Book Title - Ascending</option>
-                <option value="title" data-sort-order="DESC">Book Title - Descending</option>
-                <option value="author" data-sort-order="ASC">Book Author - Ascending</option>
-                <option value="author" data-sort-order="DESC">Book Author - Descending</option>
-                <option value="genre" data-sort-order="ASC">Book Genre - Ascending</option>
-                <option value="genre" data-sort-order="DESC">Book Genre - Descending</option>
-            </select>
-        </section>
+                <select class="form-control" name="filter" id="filter">
 
-        <!-- add a display button that will trigger the range -->
-        <section class="container-fluid col-12 p-5 d-flex align-items-center justify-content-center" id="displays-container">
+                    <option>Filter Results</option>
+                    <!-- filtering by genre -->
+                    <option value="fantasy">Fantasy</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="nonfiction">Non Fiction</option>
+                </select>
+            </div>
+            <!-- sorting books -->
+            <div class="container-fluid col d-flex align-items-center justify-content-center" id="sort-container">
 
-            <select class="form-control" name="displays_per_page">
-                <option value="5" selected>5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="30">30</option>
-            </select>
+                <select class="form-control" name="sort" id="sort">
+
+                    <option>Sort</option>
+                    <option value="title" data-sort-order="ASC">Book Title - Ascending</option>
+                    <option value="title" data-sort-order="DESC">Book Title - Descending</option>
+                    <option value="author" data-sort-order="ASC">Book Author - Ascending</option>
+                    <option value="author" data-sort-order="DESC">Book Author - Descending</option>
+                    <option value="genre" data-sort-order="ASC">Book Genre - Ascending</option>
+                    <option value="genre" data-sort-order="DESC">Book Genre - Descending</option>
+                </select>
+            </div>
+
+            <!-- add a display button that will trigger the range -->
+            <div class="container-fluid col-lg-1 col-md-1 col-sm-2 d-flex align-items-center justify-content-center" id="displays-container">
+
+                <select class="form-control" name="displays_per_page">
+                    <option value="5" selected>5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="30">30</option>
+                </select>
+            </div>
         </section>
 
         <h2 class="text-center col-12" style="text-align: center;">Orthodox Library Catalog</h2>
@@ -75,144 +100,6 @@
     <!-- popper js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <!-- javascript -->
-    <script>
-
-        const bookCatalog = document.querySelector(".books");
-        // sort
-        let sortBtn = document.querySelector("#sort");
-        let displaysPerPage = document.querySelector("select[name='displays_per_page']");
-        let start = 0;
-        let last = displaysPerPage.value;
-
-        findBookRange(start, last);
-
-        displaysPerPage.addEventListener("change", () => {
-            
-            // update the last var
-            last = displaysPerPage.value;
-
-            // check results
-            console.log("start:" + start + " last: " + last);
-
-            findBookRange(start, last);
-        });
- 
-        // update book range
-        async function findBookRange(start, last) {
-
-            // clear the list of books first
-            bookCatalog.innerHTML = null;
-
-            const options = {
-                method: "POST",
-                body: JSON.stringify({start, last}),
-                headers: {
-                    "Content-Type" : "application/json" 
-                }
-            }
-            // now search for a new range
-            const request = await fetch("/api/find-book-range", options);
-
-            const books = await request.json();
-
-            // clear the list of books first
-            bookCatalog.innerHTML = null;
-
-            books.map(book => {
-                createBook(book);
-            });
-        }
-
-        // search for book
-        function searchForBook (search) {
-
-        }
-
-        sortBtn.addEventListener("change", (e) => {
-
-            let key = e.target.getAttribute("value");
-
-            let order = e.target.getAttribute("data-sort-order");
-
-            // check results
-            console.log("Key: " + key);
-            console.log("Order: " + order);
-            // sortBookItems({ key: key, order: order });
-        });
-
-        async function sortBookItems (sort) {
-
-            const { key, order } = sort;
-            // check results
-            console.log(sort);
-            console.log(key);
-            console.log(order);
-            // const request = await fetch("/api/books/sort/key/" + key + "/order/" + order);
-            // const results = await request.json();
-            // console.log(results);
-        }
-
-        // create a new book
-        function createBook(data) {
-
-            const bookContainer = document.createElement("div");
-            bookContainer.classList.add("book-container");
-
-            const book = document.createElement("article");
-            book.classList.add("book");
-
-            const bookLink = document.createElement("a");
-            bookLink.classList.add("book-link");
-            bookLink.href = "/book/" + data.title;
-
-            const bookCoverContainer = document.createElement("div");
-            bookCoverContainer.classList.add("book-cover-container");
-
-            const bookCover = document.createElement("img");
-            bookCover.classList.add("book-cover");
-            bookCover.src = data.cover;
-            bookCover.alt = data.title;
-
-            const bookInfo = document.createElement("div");
-            bookInfo.classList.add("book-info");
-
-            const title = document.createElement("h5");
-            title.classList.add("book-title");
-            title.textContent = data.title;
-
-            const author = document.createElement("p");
-            author.classList.add("book-author");
-            author.textContent = data.author;
-
-            const description = document.createElement("p");
-            description.classList.add("book-description");
-            description.textContent = data.description;
-
-            // add the book link 1st
-            book.appendChild(bookLink);
-
-            // add the book cover to the booklink
-            bookLink.appendChild(bookCoverContainer);
-
-            // add teh book info to the link
-            bookLink.appendChild(bookInfo);
-
-            bookCoverContainer.appendChild(bookCover);
-
-            // add the book info
-            bookInfo.appendChild(title);
-            bookInfo.appendChild(author);
-            bookInfo.appendChild(description);
-
-
-            bookContainer.appendChild(book);
-            bookCatalog.appendChild(bookContainer);
-
-            // check results
-            console.log("new book created");
-        }
-        // count the total number of books in results
-        const searchResults = document.querySelector(".search-results-count");
-    </script>
+    <script src="/public/js/scripts.js" defer></script>
 </body>
 </html>

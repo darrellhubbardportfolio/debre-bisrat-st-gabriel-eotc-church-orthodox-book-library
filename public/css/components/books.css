@@ -3,11 +3,13 @@
     align-items: center;
     justify-content: center;
 }
+
 .book {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .book-link {
     display: flex;
     align-items: center;
@@ -15,25 +17,39 @@
     flex-direction: column;
     text-decoration: none;
     color: black;
-    /* border: 1px solid green; */
 }
+
 .book-cover-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 250px;
+    width: 150px;
     height: 250px;
-    /* padding: 20px; */
+    position: relative;
 }
+
+.book-genre {
+    font-size: 12px;
+    /* font-weight: bold; */
+    /* letter-spacing: 1.5px; */
+    box-shadow: 0 0 4px gray;
+    background-color: white;
+    color: royalblue;
+    width: auto;
+    height: auto;
+    padding: 4px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 1;
+}
+
 .book-cover {
     /* background-color: royalblue; */
     color: white;
     /* object-fit: contain; */
-    min-height: 100%;
+    height: 100%;
     width: 100%;
-    max-height: 100%;
-    max-width: 150px;
-    /* object-fit: contain; */
     transition: 1s ease-out;
     color: black;
     border-radius: 4px;

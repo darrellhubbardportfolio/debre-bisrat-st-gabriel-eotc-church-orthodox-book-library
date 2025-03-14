@@ -8,6 +8,7 @@ const cookie = require("cookie-parser");
 // read express static files
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // read body form data
 app.use(express.urlencoded({extended: true}));
@@ -68,16 +69,18 @@ app.get("/book/:title",
 app.get("/donate-a-book", (req, res) => {
     // res.send("pdf upload form. church members can upload a new pdf file.");
     res.render("book-donation-page");
-})
+});
+
+const { upload } = require("./middleware/upload");
 
 // church members will upload a new file here for download.
-app.post("/donate-a-book/post", (req, res) => {
+app.post("/donate-a-book/post", upload.single("book"), (req, res) => {
 
     const { name, email } = req.body;
     const book = req.file;
     
     // save to database
-    res.json({name: name, email: email});
+    res.json(req.body);
 });
 
 // administrator can view all categories here
