@@ -2,6 +2,14 @@ main {
     flex-direction: column;
     height: 100vh;
 }
+
+.book-cover-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
 .start-reading {
     text-decoration: none;
     background-color: black;
@@ -9,4 +17,6 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 3px;
+    font-size: 14px;
 }

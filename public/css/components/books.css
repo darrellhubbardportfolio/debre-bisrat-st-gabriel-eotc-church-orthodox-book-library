@@ -37,6 +37,7 @@
     transition: 1s ease-out;
     color: black;
     border-radius: 4px;
+    background-color: gray;
 }
 .book-cover:hover {
     transform: scale(1.1);

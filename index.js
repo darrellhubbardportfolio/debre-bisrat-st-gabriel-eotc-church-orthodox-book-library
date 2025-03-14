@@ -104,6 +104,16 @@ app.get("/create-book", (req, res) => {
 
 // administrators can view all users here
 
+// adminstrators can sort books
+app.get("/api/books/sort/key/:key/order/:order", 
+    async (req, res) => {
+        const { key, order } = req.params;
+        // retrieve from database
+        let book = await books.sortBooks({ key, order });
+
+        res.json(book);
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log("Server is running or port " + port);

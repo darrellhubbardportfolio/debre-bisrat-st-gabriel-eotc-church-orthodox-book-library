@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- icons from bootstrap -->
-    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-grid.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- stylesheets -->
     <link rel="stylesheet" href="/public/css/styles.css">
     <link rel="stylesheet" href="/public/css/home.css">
@@ -28,18 +28,35 @@
             <div class="search-bar container-fluid col-12 d-flex align-items-center justify-content-center">
                 <form class="container-fluid col-12 d-flex align-items-center justify-content-center" role="search">
                     <input class="form-control" type="search" placeholder="Search for books..." aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-dark">
+                        <i class="bi bi-search"></i>
+                    </button>
                 </form>
             </div>
         </section>
 
+        <!-- sort and filters -->
+        <section class="container-fluid col-12 d-flex align-items-center justify-content-center p-5" id="sort-container">
+
+            <select class="form-control" name="sort" id="sort">
+
+                <option value="title" data-sort-order="ASC">Book Title - Ascending</option>
+                <option value="title" data-sort-order="DESC">Book Title - Descending</option>
+                <option value="author" data-sort-order="ASC">Book Author - Ascending</option>
+                <option value="author" data-sort-order="DESC">Book Author - Descending</option>
+                <option value="genre" data-sort-order="ASC">Book Genre - Ascending</option>
+                <option value="genre" data-sort-order="DESC">Book Genre - Descending</option>
+            </select>
+        </section>
+
         <!-- add a display button that will trigger the range -->
-        <section class="container-fluid col-12 p-3 d-flex align-items-center justify-content-center">
+        <section class="container-fluid col-12 p-5 d-flex align-items-center justify-content-center" id="displays-container">
 
             <select class="form-control" name="displays_per_page">
-                <option value="15" selected>15</option>
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
                 <option value="30">30</option>
-                <option value="45">45</option>
             </select>
         </section>
 
@@ -54,26 +71,31 @@
         </section>
     </main>
     <!-- bootstrap js -->
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- popper js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <!-- javascript -->
     <script>
 
         const bookCatalog = document.querySelector(".books");
+        // sort
+        let sortBtn = document.querySelector("#sort");
         let displaysPerPage = document.querySelector("select[name='displays_per_page']");
         let start = 0;
         let last = displaysPerPage.value;
 
         findBookRange(start, last);
 
-        displaysPerPage.onchange = () => {
+        displaysPerPage.addEventListener("change", () => {
             
             // update the last var
             last = displaysPerPage.value;
 
+            // check results
+            console.log("start:" + start + " last: " + last);
+
             findBookRange(start, last);
-        }
+        });
  
         // update book range
         async function findBookRange(start, last) {
@@ -99,6 +121,35 @@
             books.map(book => {
                 createBook(book);
             });
+        }
+
+        // search for book
+        function searchForBook (search) {
+
+        }
+
+        sortBtn.addEventListener("change", (e) => {
+
+            let key = e.target.getAttribute("value");
+
+            let order = e.target.getAttribute("data-sort-order");
+
+            // check results
+            console.log("Key: " + key);
+            console.log("Order: " + order);
+            // sortBookItems({ key: key, order: order });
+        });
+
+        async function sortBookItems (sort) {
+
+            const { key, order } = sort;
+            // check results
+            console.log(sort);
+            console.log(key);
+            console.log(order);
+            // const request = await fetch("/api/books/sort/key/" + key + "/order/" + order);
+            // const results = await request.json();
+            // console.log(results);
         }
 
         // create a new book

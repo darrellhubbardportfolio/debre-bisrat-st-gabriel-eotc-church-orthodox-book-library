@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- icons from bootstrap -->
-    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap-grid.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- stylesheets -->
     <link rel="stylesheet" href="/public/css/styles.css">
     <link rel="stylesheet" href="/public/css/book-details.css">
@@ -23,23 +23,28 @@
         <article class="book">
 
             <figure class="book-cover-container">
-                <img src="<%= book.cover %>" width="300" height="350" alt="sample book cover" class="book-cover object-fit-contain" />
+                <img src="<%= book.cover %>" width="225" height="350" alt="sample book cover" class="book-cover rounded-3 shadow" />
             </figure>
-            <section class="container-fluid col-12 d-flex flex-column align-items-center justify-content-center">
+
+            <section class="container-fluid col-12 d-flex flex-column align-items-center justify-content-center gap-3">
                 
                 <h3 class="text-center col-12 text-truncate m-0 p-0"><%= book.title %></h3>
-                <h4 class="text-center col-12 text-truncate m-0 p-0"><%= book.author %></h4>
+                <p class="text-center col-12 text-truncate m-0 p-0"><%= book.author %></p>
                 <p class="text-center col-12 m-0 p-0"><%= book.description %></p>
 
-                <button type="button" class="btn btn-lg btn-dark rounded-pill start-reading">
-                    <span class="me-1">Start Reading</span>
-                    <i class="bi bi-arrow-up-right"></i>
-                </button>
+                <div class="container-fluid col-12 d-flex align-items-center justify-content-end p-3">
+
+                    <!-- start reading current book -->
+                    <button type="button" class="btn btn-lg btn-dark rounded-pill start-reading">
+                        <span>Start Reading</span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </button>
+                </div>
             </section>
         </article>
     </main>
     <!-- bootstrap js -->
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <!-- popper js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <!-- javascript -->
