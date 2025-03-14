@@ -2,11 +2,11 @@ const { db } = require("./models");
 
 class PDF {
 
-    createPDF() {
+    createPDF(book) {
 
-        const query = "INSERT INTO PDFs () VALUES () ";
+        const query = "INSERT INTO PDFs (filename) VALUES (?)";
 
-        db.run(query, [], err => {
+        db.run(query, [ book.book ], err => {
 
             if (err) {
                 console.error(err);

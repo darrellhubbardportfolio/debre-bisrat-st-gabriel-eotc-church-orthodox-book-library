@@ -77,9 +77,11 @@ const { upload } = require("./middleware/upload");
 app.post("/donate-a-book/post", upload.single("book"), (req, res) => {
 
     const { name, email } = req.body;
-    const book = req.file;
-    
+    const { filename } = req.file;
+    req.body.book = filename;
     // save to database
+    pdf.createPDF({ book: filename });
+
     res.json(req.body);
 });
 
